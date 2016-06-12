@@ -1,8 +1,10 @@
 package model;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
 import entities.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -29,11 +31,10 @@ public class Model {
         int max = 0;
         int currentMax;
 
-        for(Component paragraph : text.getComponents()) {
-            for(Component sentence : ((Composite)paragraph).getComponents()) {
-
+        for(Map.Entry<Integer, String> word : WordFactory.getWords().entrySet()) {
+            for(Component paragraph : text.getComponents()) {
                 currentMax = 0;
-                for(Map.Entry<Integer, String> word : WordFactory.getWords().entrySet()) {
+                for(Component sentence : ((Composite)paragraph).getComponents()) {
                     if(this.findRepeatsInSentence((Composite) sentence, word.getValue()))
                         currentMax++;
                 }
@@ -52,9 +53,9 @@ public class Model {
      * @return true - if word has a repeats. False - if not.
      */
     private boolean findRepeatsInSentence(Composite sentence, String word) {
-                return (sentence.getComponents().stream()
-                        .filter(f -> f.getValue().equals(word))
-                        .collect(Collectors.toList()).size() > 1);
+        return (sentence.getComponents().stream()
+            .filter(f -> f.getValue().equals(word))
+            .collect(Collectors.toList()).size() > 1);
     }
 
     public void setText(Composite text) {

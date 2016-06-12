@@ -42,9 +42,7 @@ public class Parser {
 
         }
 
-        Composite temp = new Composite();
-        temp.setComponents(paragraphs);
-        this.text.addComponent(temp);
+        this.text.setComponents(paragraphs);
 
         this.text.print();
     }
