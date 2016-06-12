@@ -1,8 +1,10 @@
 package main;
 
+import controller.Controller;
 import model.File;
 import model.Model;
 import model.Parser;
+import view.View;
 
 import java.io.IOException;
 
@@ -11,18 +13,8 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) {
-        String str = "input.txt";
-
-        File f = new File(str);
-        Parser parser;
-        try {
-            parser = new Parser(f.readFile());
-            parser.parse();
-            Model m = new Model(parser.getText());
-            System.out.println(m.findMostRepeats());
-        } catch (IOException e) {
-
-        }
-
+        View view = new View();
+        Controller controller = new Controller(view);
+        controller.processUser();
     }
 }

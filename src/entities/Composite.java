@@ -10,14 +10,6 @@ public class Composite implements Component{
     private List<Component> components = new ArrayList<>();
 
     @Override
-    public void print() {
-        for(Component c : components) {
-            c.print();
-        }
-        System.out.println(". ");
-    }
-
-    @Override
     public String getValue() {
         StringBuilder str = new StringBuilder();
         for(Component c : components) {

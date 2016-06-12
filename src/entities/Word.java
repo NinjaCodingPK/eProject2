@@ -12,11 +12,6 @@ public class Word implements Component {
     }
 
     @Override
-    public void print() {
-        //System.out.print(FlyWeight.words.get(value) + " ");
-        System.out.print(WordFactory.get(value) + " ");
-    }
-
     public String getValue() {
         return WordFactory.get(value);
     }

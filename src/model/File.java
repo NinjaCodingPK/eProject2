@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
+ * Class for working with outer files.
  * Created by wookie on 6/12/16.
  */
 public class File {
@@ -15,6 +16,11 @@ public class File {
         this.fileName = fileName;
     }
 
+    /**
+     * Method returns text from file as String.
+     * @return text from file.
+     * @throws IOException
+     */
     public String readFile() throws IOException {
         byte[] encoded = Files.readAllBytes(Paths.get(fileName));
         return new String(encoded, Charset.forName("8859_1"));

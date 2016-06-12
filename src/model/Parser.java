@@ -22,6 +22,9 @@ public class Parser {
         this.strText = strText;
     }
 
+    /**
+     * Method cast input string into entities.
+     */
     public void parse() {
         List<Component> paragraphs = new ArrayList<>();
 
@@ -40,10 +43,13 @@ public class Parser {
         }
 
         this.text.setComponents(paragraphs);
-
-        this.text.print();
     }
 
+    /**
+     * Method add new list of components into a whole list of components.
+     * @param list list of components.
+     * @param toAdd elements which will be added to list.
+     */
     private void addComponentList(List<Component> list, List<Component> toAdd) {
         Composite temp = new Composite();
         temp.setComponents(toAdd);
@@ -62,6 +68,12 @@ public class Parser {
 //        sentences.add(temp);
 //    }
 
+    /**
+     * Method divide text using regular expressions.
+     * @param text text to split.
+     * @param regex a regular expression.
+     * @return List of divided strings.
+     */
     private List<String> getRegexValues(final String text, final String regex) {
         List<String> tagValues = new ArrayList<>();
 //        Pattern pattern = Pattern.compile(regex);
@@ -83,6 +95,7 @@ public class Parser {
     public Composite getText() {
         return text;
     }
+
 //    private CharSequence fromFile() throws IOException {
 //        FileInputStream fis = new FileInputStream(FILE_NAME);
 //        FileChannel fc = fis.getChannel();
