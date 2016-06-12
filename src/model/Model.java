@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 
 /**
+ * Class provides methods for working with parsed text.
  * Created by wookie on 6/12/16.
  */
 public class Model {

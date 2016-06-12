@@ -1,5 +1,6 @@
 package main;
 
+import model.File;
 import model.Model;
 import model.Parser;
 
@@ -12,15 +13,16 @@ public class Main {
     public static void main(String[] args) {
         String str = "input.txt";
 
-
-        Parser parser = new Parser(str);
+        File f = new File(str);
+        Parser parser;
         try {
-            parser.parse1();
+            parser = new Parser(f.readFile());
+            parser.parse();
+            Model m = new Model(parser.getText());
+            System.out.println(m.findMostRepeats());
         } catch (IOException e) {
 
         }
 
-        Model m = new Model(parser.getText());
-        System.out.println(m.findMostRepeats());
     }
 }

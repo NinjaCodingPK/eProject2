@@ -15,18 +15,17 @@ import java.util.List;
  */
 public class Parser {
     private Composite text = new Composite();
-    private final String FILE_NAME;
+    private String strText;
     //private WordFactory wordFactory = new WordFactory();
 
-    public Parser(String fileName) {
-        this.FILE_NAME = fileName;
+    public Parser(String strText) {
+        this.strText = strText;
     }
 
-    public void parse1() throws IOException {
-        String str = this.readFile();
+    public void parse() {
         List<Component> paragraphs = new ArrayList<>();
 
-        for(String paragraph : getRegexValues(str, Constant.PARAGRAPH_REGEX)) {
+        for(String paragraph : getRegexValues(strText, Constant.PARAGRAPH_REGEX)) {
 
             List<Component> sentences = new ArrayList<>();
             for(String sentence : getRegexValues(paragraph, Constant.SENTENCE_REGEX)) {
@@ -36,10 +35,8 @@ public class Parser {
                     words.add(new Word(WordFactory.getId(word)));
                 }
                 addComponentList(sentences, words);
-
             }
             addComponentList(paragraphs, sentences);
-
         }
 
         this.text.setComponents(paragraphs);
@@ -65,7 +62,7 @@ public class Parser {
 //        sentences.add(temp);
 //    }
 
-    private List<String> getRegexValues(final String text, final String regex) throws IOException {
+    private List<String> getRegexValues(final String text, final String regex) {
         List<String> tagValues = new ArrayList<>();
 //        Pattern pattern = Pattern.compile(regex);
 //        Matcher matcher = pattern.matcher(text);
@@ -81,11 +78,6 @@ public class Parser {
         }
 
         return tagValues;
-    }
-
-    private String readFile() throws IOException {
-        byte[] encoded = Files.readAllBytes(Paths.get(FILE_NAME));
-        return new String(encoded, Charset.forName("8859_1"));
     }
 
     public Composite getText() {
