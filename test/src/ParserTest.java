@@ -1,8 +1,6 @@
 package src;
 
-import entities.Composite;
-import entities.Word;
-import entities.WordFactory;
+import entities.*;
 import model.File;
 import model.Parser;
 import org.junit.Test;

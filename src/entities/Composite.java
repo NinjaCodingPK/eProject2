@@ -7,14 +7,25 @@ import java.util.List;
  * Created by wookie on 6/12/16.
  */
 public class Composite implements Component{
-    private List<Component> components = new ArrayList<>();
+    protected List<Component> components = new ArrayList<>();
+
+    public Composite() {
+
+    }
+
+    public Composite(List<Component> components) {
+        this.components = components;
+    }
 
     @Override
-    public String getValue() {
+    public String getValue(){
         StringBuilder str = new StringBuilder();
         for(Component c : components) {
             str.append(c.getValue());
+            str.append(" ");
         }
+        str.setCharAt(str.length()-1, '.');
+        //str.append(".");
 
         return str.toString();
     }

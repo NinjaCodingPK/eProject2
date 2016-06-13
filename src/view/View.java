@@ -4,6 +4,7 @@ import entities.Component;
 import entities.Composite;
 
 /**
+ * Class View in MVC model.
  * Created by wookie on 6/12/16.
  */
 public class View {
@@ -22,6 +23,7 @@ public class View {
             }
             System.out.println();
         }
+
     }
 
     public void printMessage(String... message) {

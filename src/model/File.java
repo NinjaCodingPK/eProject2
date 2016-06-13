@@ -1,19 +1,22 @@
 package model;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Properties;
 
 /**
  * Class for working with outer files.
  * Created by wookie on 6/12/16.
  */
 public class File {
-    private String fileName;
+    public static final String FILE_NAME_BUNDLE = "file.name";
+    private Properties prop = new Properties();
 
-    public File(String fileName) {
-        this.fileName = fileName;
+    public File() {
+
     }
 
     /**
@@ -22,7 +25,29 @@ public class File {
      * @throws IOException
      */
     public String readFile() throws IOException {
-        byte[] encoded = Files.readAllBytes(Paths.get(fileName));
-        return new String(encoded, Charset.forName("8859_1"));
+        byte[] encoded = Files.readAllBytes(Paths.get(getProperty(FILE_NAME_BUNDLE)));
+        return new String(encoded);
+    }
+
+    /**
+     * Method initialize config file.
+     * @throws IOException
+     */
+    public void initConfig() throws IOException {
+        String propFileName = "config/config.properties";
+
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+
+        prop.load(inputStream);
+        inputStream.close();
+    }
+
+    /**
+     * Get property from property file by key.
+     * @param key in property file.
+     * @return property from property file.
+     */
+    public String getProperty(String key) {
+        return prop.getProperty(key);
     }
 }

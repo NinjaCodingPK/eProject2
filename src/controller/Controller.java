@@ -8,6 +8,7 @@ import view.View;
 import java.io.IOException;
 
 /**
+ * Class Controller in MVC model.
  * Created by wookie on 6/12/16.
  */
 public class Controller {
@@ -19,11 +20,11 @@ public class Controller {
     }
 
     public void processUser() {
-        String str = "input.txt";
-
-        File f = new File(str);
+        File f = new File();
         Parser parser;
+
         try {
+            f.initConfig();
             parser = new Parser(f.readFile());
             parser.parse();
             Model m = new Model(parser.getText());
