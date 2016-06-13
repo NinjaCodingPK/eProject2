@@ -12,18 +12,7 @@ public class View {
     public static final String TEXT = "Text: ";
 
     public void printText(Composite text) {
-        System.out.println(TEXT);
-        for(Component paragraph : text.getComponents()) {
-            for(Component sentence : ((Composite)paragraph).getComponents()) {
-                for(Component word : ((Composite)sentence).getComponents()) {
-                    System.out.print(" ");
-                    System.out.print(word.getValue());
-                }
-                System.out.print(".");
-            }
-            System.out.println();
-        }
-
+        System.out.println(text.getValue());
     }
 
     public void printMessage(String... message) {

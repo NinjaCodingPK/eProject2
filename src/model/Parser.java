@@ -14,7 +14,7 @@ import java.util.List;
  * Created by wookie on 6/12/16.
  */
 public class Parser {
-    private Composite text = new Composite();
+    private Composite text = new Text();
     private String strText;
     //private WordFactory wordFactory = new WordFactory();
 
@@ -37,23 +37,12 @@ public class Parser {
                 for(String word : getRegexValues(sentence, Constant.WORD_REGEX)) {
                     words.add(new Word(WordFactory.getId(word)));
                 }
-                addComponentList(sentences, words);
+                sentences.add(new Sentence(words));
             }
-            addComponentList(paragraphs, sentences);
+            paragraphs.add(new Paragraph(sentences));
         }
 
         this.text.setComponents(paragraphs);
-    }
-
-    /**
-     * Method add new list of components into a whole list of components.
-     * @param list list of components.
-     * @param toAdd elements which will be added to list.
-     */
-    private void addComponentList(List<Component> list, List<Component> toAdd) {
-        Composite temp = new Composite();
-        temp.setComponents(toAdd);
-        list.add(temp);
     }
 
 //    private List<Component> parseStep(String text, String regex) throws IOException {

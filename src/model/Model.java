@@ -33,15 +33,15 @@ public class Model {
         int currentMax;
 
         for(Map.Entry<Integer, String> word : WordFactory.getWords().entrySet()) {
+            currentMax = 0;
             for(Component paragraph : text.getComponents()) {
-                currentMax = 0;
                 for(Component sentence : ((Composite)paragraph).getComponents()) {
                     if(this.findRepeatsInSentence((Composite) sentence, word.getValue()))
                         currentMax++;
                 }
-                if(currentMax > max)
-                    max = currentMax;
             }
+            if(currentMax > max)
+                max = currentMax;
         }
 
         return max;

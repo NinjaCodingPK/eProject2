@@ -23,9 +23,9 @@ public class ParserTest {
         Parser p = new Parser(f.readFile());
         p.parse();
 
-        Composite expText = new Composite();
-        Composite paragraph = new Composite();
-        Composite sentence = new Composite();
+        Composite expText = new Text();
+        Composite paragraph = new Paragraph();
+        Composite sentence = new Sentence();
         Word word = new Word(WordFactory.getId("asd"));
         sentence.addComponent(word);
         paragraph.addComponent(sentence);

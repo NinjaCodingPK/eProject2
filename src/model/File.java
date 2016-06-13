@@ -13,6 +13,7 @@ import java.util.Properties;
  */
 public class File {
     public static final String FILE_NAME_BUNDLE = "file.name";
+    public static final String CONFIG_FILE_NAME = "config/config.properties";
     private Properties prop = new Properties();
 
     public File() {
@@ -34,7 +35,7 @@ public class File {
      * @throws IOException
      */
     public void initConfig() throws IOException {
-        String propFileName = "config/config.properties";
+        String propFileName = CONFIG_FILE_NAME;
 
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
 
