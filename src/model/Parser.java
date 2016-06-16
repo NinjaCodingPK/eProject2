@@ -30,7 +30,7 @@ public class Parser {
      * @return function for forming symbols from some text.
      */
     private Function<String, TextComponent> getSymbolFunction() {
-        return ch -> SymbolFactory.getSymbol(ch.charAt(0));
+        return symbol -> SymbolFactory.getSymbol(symbol.charAt(0));
     }
 
     /**
@@ -105,9 +105,9 @@ public class Parser {
         return tagValues;
     }
 
+
     public TextComposite getText() {
         return text;
     }
-
 
 }
