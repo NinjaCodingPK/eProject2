@@ -4,7 +4,7 @@ package constants;
  * Created by wookie on 6/12/16.
  */
 public interface Constant {
-    String REAPLECE_SYMBOLS = "(\\s{2,})|(\t)";
+    String REPLACE_SYMBOLS = "(\\s{2,})|(\t)";
     String CHANGE_TO_CHARACTER = " ";
     String PARAGRAPH_REGEX = ".+((\u2029$)|(\\z)|(\\n))";
     String SENTENCE_REGEX = "[^.!?\\s][^.!?]*(?:[.!?](?!['\"]?\\s|$)[^.!?]*)*[.!?]?[\\s]*+[\\n]*+";
