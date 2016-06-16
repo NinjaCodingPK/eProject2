@@ -1,7 +1,7 @@
 package src;
 
-import entities.Word;
-import entities.WordFactory;
+import entities.Symbol;
+import entities.SymbolFactory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,13 +13,12 @@ public class WordFactoryTest {
 
     @Test
     public void testWordFactory() {
-        String strA = "a";
-        String strB = "b";
-        int intA = WordFactory.getId(strA);
-        int intB = WordFactory.getId(strB);
-        int test = WordFactory.getId(strA);
+        char charA = 'a';
+        char charB = 'b';
+        Symbol wordA = SymbolFactory.getSymbol(charA);
+        Symbol wordB = SymbolFactory.getSymbol(charB);
+        Symbol test = SymbolFactory.getSymbol(charA);
 
-        assertEquals("Word Factory test int", intA, test);
-        assertEquals("Word Factory test string", WordFactory.get(intA), WordFactory.get(test));
+        assertEquals("Word Factory test int", wordA.getValue(), test.getValue());
     }
 }

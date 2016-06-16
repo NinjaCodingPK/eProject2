@@ -23,11 +23,15 @@ public class ParserTest {
         Parser p = new Parser(f.readFile());
         p.parse();
 
-        Composite expText = new Text();
-        Composite paragraph = new Paragraph();
-        Composite sentence = new Sentence();
-        Word word = new Word(WordFactory.getId("asd"));
+        TextComposite expText = new TextComposite();
+        TextComposite paragraph = new TextComposite();
+        TextComposite sentence = new TextComposite();
+        TextComposite word = new TextComposite();
+        word.addComponent(SymbolFactory.getSymbol('a'));
+        word.addComponent(SymbolFactory.getSymbol('s'));
+        word.addComponent(SymbolFactory.getSymbol('d'));
         sentence.addComponent(word);
+        sentence.addComponent(SymbolFactory.getSymbol('.'));
         paragraph.addComponent(sentence);
         expText.addComponent(paragraph);
 

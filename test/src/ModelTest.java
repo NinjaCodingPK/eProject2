@@ -1,8 +1,5 @@
 package src;
 
-import entities.Composite;
-import entities.Word;
-import entities.WordFactory;
 import model.File;
 import model.Model;
 import model.Parser;
