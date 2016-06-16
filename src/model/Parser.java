@@ -14,8 +14,11 @@ import java.util.regex.Pattern;
 public class Parser {
     private TextComposite text = new TextComposite();
     private String strText;
-    //private WordFactory wordFactory = new WordFactory();
 
+    /**
+     * Constructor for parser class.
+     * @param strText text which will be parsed.
+     */
     public Parser(String strText) {
         this.strText = strText;
     }
@@ -23,25 +26,6 @@ public class Parser {
     /**
      * Method cast input string into entities.
      */
-    /*public void parse() {
-        List<TextComponent> paragraphs = new ArrayList<>();
-
-        for(String paragraph : getRegexValues(strText, Constant.PARAGRAPH_REGEX)) {
-
-            List<TextComponent> sentences = new ArrayList<>();
-            for(String sentence : getRegexValues(paragraph, Constant.SENTENCE_REGEX)) {
-                List<TextComponent> words = new ArrayList<>();
-
-                for(String word : getRegexValues(sentence, Constant.WORD_REGEX)) {
-                    words.add(WordFactory.getSymbol(word));
-                }
-                sentences.add(new Sentence(words));
-            }
-            paragraphs.add(new Paragraph(sentences));
-        }
-
-        this.text.setComponents(paragraphs);
-    }*/
     public void parse() {
         List<TextComponent> paragraphs = new ArrayList<>();
 
@@ -71,18 +55,6 @@ public class Parser {
         this.text.setComponents(paragraphs);
     }
 
-//    private List<TextComponent> parseStep(String text, String regex) throws IOException {
-//        List<TextComponent> list = new ArrayList<>();
-//
-//        for(String s : getRegexValues(text, regex)) {
-//
-//        }
-//
-//        TextComposite temp = new TextComposite();
-//        temp.setComponents(s);
-//        sentences.add(temp);
-//    }
-
     /**
      * Method divide text using regular expressions.
      * @param text text to split.
@@ -98,12 +70,6 @@ public class Parser {
             tagValues.add(matcher.group());
         }
 
-//        String[] words = text.trim().split(regex);
-//        for(String s : words) {
-//            //if(!s.equals(""))
-//                tagValues.add(s);
-//        }
-
         return tagValues;
     }
 
@@ -111,17 +77,5 @@ public class Parser {
         return text;
     }
 
-//    private CharSequence fromFile() throws IOException {
-//        FileInputStream fis = new FileInputStream(FILE_NAME);
-//        FileChannel fc = fis.getChannel();
-//
-//        // Create a read-only CharBuffer on the file
-//        ByteBuffer bbuf;
-//        CharBuffer cbuf;
-//
-//        bbuf = fc.map(FileChannel.MapMode.READ_ONLY, 0, (int) fc.size());
-//        cbuf =  Charset.forName("8859_1").newDecoder().decode(bbuf);
-//        fis.close();
-//        return cbuf;
-//    }
+
 }
