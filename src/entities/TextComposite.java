@@ -32,10 +32,18 @@ public class TextComposite implements TextComponent {
         return str.toString();
     }
 
+    /**
+     * Method add a component into list of components.
+     * @param component a component to add.
+     */
     public void addComponent(TextComponent component) {
         components.add(component);
     }
 
+    /**
+     * Method remove component from list of components.
+     * @param component a component to remove.
+     */
     public void removeComponent(TextComponent component) {
         components.remove(component);
     }

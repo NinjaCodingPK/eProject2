@@ -20,8 +20,8 @@ public class ModelTest {
         File f = mock(File.class);
         when(f.readFile()).thenReturn("asd asd. asd asd.");
 
-        Parser p = new Parser(f.readFile());
-        p.parse();
+        Parser p = new Parser();
+        p.parse(f.readFile());
 
         Model m = new Model(p.getText());
         int act = m.findMostRepeats();

@@ -15,14 +15,9 @@ import java.util.stream.Collectors;
  */
 public class Parser {
     private TextComposite text = new TextComposite();
-    private String strText;
 
-    /**
-     * Constructor for parser class.
-     * @param strText text which will be parsed.
-     */
-    public Parser(String strText) {
-        this.strText = strText;
+    public Parser() {
+
     }
 
     /**
@@ -82,13 +77,24 @@ public class Parser {
 
     /**
      * Method cast input string into entities.
+     * @param text input text to parse.
      */
-    public void parse() {
-        this.text.setComponents(parseStep(strText, Constant.PARAGRAPH_REGEX, getParagraphFunction()));
+    public void parse(String text) {
+        this.text.setComponents(parseStep(prepareText(text), Constant.PARAGRAPH_REGEX, getParagraphFunction()));
     }
 
     /**
-     * Method divide text using regular expressions.
+     * Method prepare text for parsing.
+     * Method replace symbols '\t' and sequence of spaces with one space.
+     * @param text input text.
+     * @return prepared text for parsing.
+     */
+    private String prepareText(String text) {
+        return text.replaceAll(Constant.REPLACE_SYMBOLS, Constant.CHANGE_TO_CHARACTER);
+    }
+
+    /**
+     * Method splits text using regular expressions.
      * @param text text to split.
      * @param regex a regular expression.
      * @return List of divided strings.

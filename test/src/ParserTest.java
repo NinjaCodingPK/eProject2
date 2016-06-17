@@ -20,8 +20,8 @@ public class ParserTest {
         File f = mock(File.class);
         when(f.readFile()).thenReturn("asd.");
 
-        Parser p = new Parser(f.readFile());
-        p.parse();
+        Parser p = new Parser();
+        p.parse(f.readFile());
 
         TextComposite expText = new TextComposite();
         TextComposite paragraph = new TextComposite();
