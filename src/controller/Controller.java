@@ -13,7 +13,6 @@ import java.io.IOException;
  */
 public class Controller {
     private View view;
-    private Model model;
 
     public Controller(View view) {
         this.view = view;
@@ -25,8 +24,8 @@ public class Controller {
 
         try {
             f.initConfig();
-            parser = new Parser(f.readFile());
-            parser.parse();
+            parser = new Parser();
+            parser.parse(f.readFile());
             Model m = new Model(parser.getText());
             int max_repeats = m.findMostRepeats();
 
