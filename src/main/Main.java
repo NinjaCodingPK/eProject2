@@ -1,7 +1,8 @@
 package main;
 
 import controller.Controller;
-import model.File;
+import datasource.DataSource;
+import datasource.impl.File;
 import model.Model;
 import model.Parser;
 import view.View;
@@ -14,7 +15,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         View view = new View();
-        Controller controller = new Controller(view);
+        DataSource dataSource = new File();
+        Controller controller = new Controller(view, dataSource);
         controller.processUser();
     }
 }

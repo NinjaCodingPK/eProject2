@@ -1,9 +1,10 @@
 package src;
 
 import entities.*;
-import model.File;
 import model.Parser;
 import org.junit.Test;
+
+import datasource.impl.File;
 
 import java.io.IOException;
 
@@ -18,10 +19,10 @@ public class ParserTest {
     @Test
     public void testParse() throws IOException {
         File f = mock(File.class);
-        when(f.readFile()).thenReturn("asd.");
+        when(f.getText()).thenReturn("asd.");
 
         Parser p = new Parser();
-        p.parse(f.readFile());
+        p.parse(f.getText());
 
         TextComposite expText = new TextComposite();
         TextComposite paragraph = new TextComposite();

@@ -1,9 +1,10 @@
 package src;
 
-import model.File;
 import model.Model;
 import model.Parser;
 import org.junit.Test;
+
+import datasource.impl.File;
 
 import java.io.IOException;
 
@@ -18,10 +19,10 @@ public class ModelTest {
     @Test
     public void testFindMostRepeats() throws IOException {
         File f = mock(File.class);
-        when(f.readFile()).thenReturn("asd asd. asd asd.");
+        when(f.getText()).thenReturn("asd asd. asd asd.");
 
         Parser p = new Parser();
-        p.parse(f.readFile());
+        p.parse(f.getText());
 
         Model m = new Model(p.getText());
         int act = m.findMostRepeats();

@@ -1,11 +1,13 @@
 package controller;
 
-import model.File;
 import model.Model;
 import model.Parser;
 import view.View;
 
 import java.io.IOException;
+
+import datasource.DataSource;
+import datasource.impl.File;
 
 /**
  * Class Controller in MVC model.
@@ -13,26 +15,22 @@ import java.io.IOException;
  */
 public class Controller {
     private View view;
+    private DataSource dataSource;
 
-    public Controller(View view) {
+    public Controller(View view, DataSource dataSource) {
         this.view = view;
+        this.dataSource = dataSource;
     }
 
     public void processUser() {
-        File f = new File();
         Parser parser;
 
-        try {
-            f.initConfig();
-            parser = new Parser();
-            parser.parse(f.readFile());
-            Model m = new Model(parser.getText());
-            int max_repeats = m.findMostRepeats();
+        parser = new Parser();
+        parser.parse(dataSource.getText());
+        Model m = new Model(parser.getText());
+        int max_repeats = m.findMostRepeats();
 
-            view.printText(parser.getText());
-            view.printMessage(View.MAX_REPEATS,Integer.toString(max_repeats));
-        } catch (IOException e) {
-
-        }
+        view.printText(parser.getText());
+        view.printMessage(View.MAX_REPEATS,Integer.toString(max_repeats));
     }
 }
